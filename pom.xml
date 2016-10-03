@@ -47,7 +47,7 @@
         <dependency>
             <groupId>us.myles</groupId>
             <artifactId>viaversion</artifactId>
-            <version>0.9.8-SNAPSHOT</version>
+            <version>1.0.0-ALPHA-modules</version>
         </dependency>
         <!-- Netty (Network Library) -->
         <dependency>

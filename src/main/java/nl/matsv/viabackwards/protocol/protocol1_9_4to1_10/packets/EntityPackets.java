@@ -23,13 +23,13 @@ import nl.matsv.viabackwards.api.rewriters.EntityRewriter;
 import nl.matsv.viabackwards.api.storage.EntityTracker;
 import nl.matsv.viabackwards.protocol.protocol1_9_4to1_10.Protocol1_9To1_10;
 import us.myles.ViaVersion.api.PacketWrapper;
+import us.myles.ViaVersion.api.minecraft.metadata.types.MetaType1_9;
 import us.myles.ViaVersion.api.remapper.PacketHandler;
 import us.myles.ViaVersion.api.remapper.PacketRemapper;
 import us.myles.ViaVersion.api.type.Type;
 import us.myles.ViaVersion.api.type.types.version.Types1_9;
 import us.myles.ViaVersion.packets.State;
 import us.myles.ViaVersion.protocols.protocol1_9_3to1_9_1_2.storage.ClientWorld;
-import us.myles.ViaVersion.protocols.protocol1_9to1_8.metadata.NewType;
 
 public class EntityPackets extends EntityRewriter<Protocol1_9To1_10> {
 
@@ -331,8 +331,7 @@ public class EntityPackets extends EntityRewriter<Protocol1_9To1_10> {
                 boolean b = (boolean) data.getValue();
 
                 data.setId(13);
-                data.setType(Type.BYTE);
-                data.setTypeID(NewType.Byte.getTypeID());
+                data.setMetaType(MetaType1_9.Boolean);
                 data.setValue(b ? (byte) (14 & 0x0F) : 0);
             }
             return data;
@@ -343,7 +342,7 @@ public class EntityPackets extends EntityRewriter<Protocol1_9To1_10> {
             if (isObject || entityType != 54)
                 return data;
 
-            if (data.getId() == 13 && data.getTypeID() == 1 && (int) data.getValue() == 6)
+            if (data.getId() == 13 && data.getMetaType().getTypeID() == 1 && (int) data.getValue() == 6)
                 data.setValue(0);
             return data;
         });
@@ -353,7 +352,7 @@ public class EntityPackets extends EntityRewriter<Protocol1_9To1_10> {
             if (isObject || entityType != 51)
                 return data;
 
-            if (data.getId() == 12 && data.getTypeID() == 1 && (int) data.getValue() == 2)
+            if (data.getId() == 12 && data.getMetaType().getTypeID() == 1 && (int) data.getValue() == 2)
                 data.setValue(0);
             return data;
         });

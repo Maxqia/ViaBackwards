@@ -21,8 +21,8 @@ package nl.matsv.viabackwards.protocol.protocol1_9_4to1_10.chunks;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import org.apache.commons.lang.IllegalClassException;
-import org.bukkit.World;
 import us.myles.ViaVersion.api.ViaVersion;
+import us.myles.ViaVersion.api.minecraft.Environment;
 import us.myles.ViaVersion.api.minecraft.chunks.Chunk;
 import us.myles.ViaVersion.api.minecraft.chunks.ChunkSection;
 import us.myles.ViaVersion.api.type.PartialType;
@@ -66,7 +66,7 @@ public class Chunk1_10Type extends PartialType<Chunk, ClientWorld> {
             sections[i] = section;
             section.readBlocks(input);
             section.readBlockLight(input);
-            if (world.getEnvironment() == World.Environment.NORMAL) {
+            if (world.getEnvironment() == Environment.NORMAL) {
                 section.readSkyLight(input);
             }
         }
